@@ -1,0 +1,183 @@
+/* 전체 초기화 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+/* 네비게이션 스타일 */
+#nav {
+    width: 100%;
+    height: 100px;
+    padding-bottom: 10px;
+    box-shadow: 0px -2px 10px 0.2px black;
+}
+
+#nav_top {
+    display: flex;
+    list-style-type: none;
+    height: 30px;
+    background-color: rgb(22, 55, 99);
+}
+
+#nav_last {
+    display: flex;
+}
+
+#nav_top_first {
+    text-decoration: none;
+    position: absolute;
+    left: 6.5%;
+    line-height: 30px;
+    font-size: 13.5px;
+    color: lightblue;
+}
+
+#nav_top_first:hover {
+    color: white;
+    border-radius: 3px;
+    transition-duration: 0.2s;
+}
+
+#logo_first {
+    position: absolute;
+    width: 250px;
+    top: 43.5px;
+    left: 6%;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* map-box 스타일 */
+#map-box {
+    position: relative;
+    width: 70%; /* 지도의 비율 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px; /* 상단에서 10px 떨어뜨리기 */
+    margin-right: 20px;
+}
+
+/* 지도 크기 및 위치 조정 */
+#map {
+    width: 100%;
+    height: 500px; /* 지도 높이 설정 */
+    border-radius: 10px;
+    margin-bottom: 10px; /* 지도와 이미지 모달 사이의 10px 간격 */
+}
+
+/* 이미지 모달 */
+#imageModal {
+    width: 100%;
+    display: none;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* 모달 내부 콘텐츠 */
+.modal-content {
+    text-align: center;
+}
+
+.modal-content img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* 모달 버튼 스타일 */
+.modal-content button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+/* 메인 컨테이너 */
+#container {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 검색 칸 컨테이너 */
+.input-container {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* 우측 패널 */
+.controls {
+    flex-basis: 30%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-left: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 푸터 스타일 */
+#footer {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(48, 48, 48);
+}
+
+#footer_in {
+    padding-top: 30px;
+    color: rgb(158, 158, 158);
+    font-size: 14px;
+    padding-left: 30px;
+}
+
+/* 반응형 레이아웃 */
+@media all and (max-width: 1024px) {
+    #map {
+        flex-basis: 100%;
+        height: 500px;
+    }
+
+    .controls {
+        flex-basis: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+}
