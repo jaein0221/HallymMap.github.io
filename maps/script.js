@@ -164,8 +164,8 @@ function displayImage() {
         const imageElement = document.getElementById('imageDisplay');
         
         // building 폴더 추가하여 이미지 경로 설정
-        imageElement.src = `/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`;
-        console.log("Displaying image:", `/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`);
+        imageElement.src = `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`;
+        console.log("Displaying image:", `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`);
     } else {
         console.error("No images found to display.");
     }
