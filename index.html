@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- 화면 크기에 맞춰 자동 조정 -->
     <title>한림대학교 캠퍼스맵</title>
     
     <!-- 카카오 지도 API 불러오기 -->
@@ -32,15 +32,16 @@
         <!-- 왼쪽 지도 및 이미지 영역을 감싸는 박스 -->
         <div id="map-box">
             <!-- 카카오 지도 영역 -->
-            <div id="map"></div>
+            <div id="map" aria-label="한림대학교 지도"></div> <!-- 접근성 개선을 위한 aria-label 추가 -->
 
             <!-- 이미지 팝업 모달 -->
-            <div id="imageModal" style="display:none;">
+            <div id="imageModal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="imageModalLabel">
                 <div class="modal-content">
-                    <img id="imageDisplay" src="" alt="Building Floor Image">
-                    <button onclick="prevImage()">이전</button>
-                    <button onclick="nextImage()">다음</button>
-                    <button onclick="closeImageModal()">닫기</button>
+                    <h2 id="imageModalLabel" style="display:none;">층 이미지</h2> <!-- 접근성을 위한 라벨 추가 -->
+                    <img id="imageDisplay" src="" alt="건물 층 이미지">
+                    <button onclick="prevImage()" aria-label="이전 이미지">이전</button>
+                    <button onclick="nextImage()" aria-label="다음 이미지">다음</button>
+                    <button onclick="closeImageModal()" aria-label="이미지 모달 닫기">닫기</button>
                 </div>
             </div>
         </div>
@@ -49,18 +50,19 @@
         <div class="controls">
             <h3>강의실 검색 및 길찾기</h3>
             <div class="input-container">
+                <label for="classroom">강의실 번호</label> <!-- 접근성을 위한 label 추가 -->
                 <input type="text" id="classroom" placeholder="강의실 번호 입력 (예: A1400)">
                 <button onclick="findClassroom()">검색</button>
             </div>
             <h4>검색 결과</h4>
-            <div id="search-result"></div>
+            <div id="search-result" aria-live="polite"></div> <!-- 실시간 업데이트 영역으로 설정 -->
         </div>
     </div>
 
     <!-- 푸터 -->
     <footer id="footer">
         <div id="footer_in">
-            (24252)강원도 춘천시 한림대학길 | 
+            (24252) 강원도 춘천시 한림대학길
         </div>
     </footer>
 
