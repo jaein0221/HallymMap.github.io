@@ -1,12 +1,12 @@
 // 지도 생성 및 객체 리턴 (초기 위치를 한림대학교로 설정)
 var mapContainer = document.getElementById('map'), 
     mapOption = { 
-        center: new kakao.maps.LatLng(37.8865, 127.7354),
-        level: 3
+        center: new kakao.maps.LatLng(37.8865, 127.7354), // 한림대학교 중심 좌표
+        level: 3 // 지도 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption);
-var currentMarker = null;
+var currentMarker = null; // 현재 표시된 마커
 var currentImageIndex = 0;
 var currentBuilding = null;
 var currentImages = [];
@@ -97,11 +97,33 @@ function showImagesForFloor(building, floor) {
     document.getElementById('imageModal').style.display = 'block';
 }
 
+// 이미지 표시
 function displayImage() {
     const imageElement = document.getElementById('imageDisplay');
     imageElement.src = `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`;
 }
 
+// 이전 이미지
+function prevImage() {
+    if (currentImages.length > 0) {
+        currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+        displayImage();
+    } else {
+        console.error("No images available for prevImage.");
+    }
+}
+
+// 다음 이미지
+function nextImage() {
+    if (currentImages.length > 0) {
+        currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+        displayImage();
+    } else {
+        console.error("No images available for nextImage.");
+    }
+}
+
+// 모달 닫기
 function closeImageModal() {
     document.getElementById('imageModal').style.display = 'none';
     if (currentMarker) currentMarker.setMap(null);
