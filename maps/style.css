@@ -15,6 +15,12 @@ a {
     height: 100px;
     padding-bottom: 10px;
     box-shadow: 0px -2px 10px 0.2px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: rgb(22, 55, 99);
+    position: relative;
 }
 
 #nav_top {
@@ -26,31 +32,24 @@ a {
 
 #nav_last {
     display: flex;
+    align-items: center;
 }
 
 #nav_top_first {
     text-decoration: none;
-    position: absolute;
-    left: 6.5%;
+    position: relative;
     line-height: 30px;
     font-size: 13.5px;
     color: lightblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    left: 6.5%;
 }
 
 #nav_top_first:hover {
     color: white;
-    border-radius: 3px;
-    transition-duration: 0.2s;
-}
-
-#logo_first {
-    position: absolute;
-    width: 250px;
-    top: 43.5px;
-    left: 6%;
-    padding: 5px;
-    background-color: white;
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
 }
 
 /* 로고 스타일 */
@@ -183,48 +182,26 @@ button:hover {
     padding-left: 30px;
 }
 
-/* 반응형 레이아웃 */
-@media (max-width: 1024px) {
-    #container {
-        flex-direction: column;
-        height: auto;
-    }
-    #map-box, .controls {
-        width: 100%;
-        margin-right: 0;
-    }
-    #map {
-        height: 400px;
-    }
-}
-
+/* 모바일 화면에서 고정 크기 유지 */
 @media (max-width: 768px) {
     #nav {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
+        flex-direction: row;
+        height: 100px;
+        padding: 10px 20px;
     }
     #logo_first {
-        width: 150px;
-        margin-bottom: 10px;
-        position: relative;
+        width: 200px;
+        margin: 0;
+        position: absolute;
+        top: 43.5px;
+        left: 6%;
     }
     #nav_top_first {
-        font-size: 12px;
+        font-size: 13.5px;
+        position: absolute;
+        left: 6.5%;
     }
     #map {
-        height: 300px;
-    }
-    .modal-content img {
-        max-height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    #logo_first {
-        width: 120px;
-    }
-    #nav_top_first {
-        font-size: 11px;
+        height: 500px;
     }
 }
