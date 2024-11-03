@@ -37,19 +37,17 @@ a {
 
 #nav_top_first {
     text-decoration: none;
-    position: relative;
+    position: absolute;
+    left: 6.5%;
     line-height: 30px;
     font-size: 13.5px;
     color: lightblue;
-    padding: 5px 10px;
-    border-radius: 5px;
-    left: 6.5%;
 }
 
 #nav_top_first:hover {
     color: white;
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: background-color 0.2s ease;
+    border-radius: 3px;
+    transition-duration: 0.2s;
 }
 
 /* 로고 스타일 */
@@ -182,26 +180,64 @@ button:hover {
     padding-left: 30px;
 }
 
-/* 모바일 화면에서 고정 크기 유지 */
-@media (max-width: 768px) {
-    #nav {
-        flex-direction: row;
-        height: 100px;
-        padding: 10px 20px;
+/* 반응형 레이아웃 */
+@media (max-width: 1024px) {
+    #container {
+        flex-direction: column;
+        height: auto;
     }
-    #logo_first {
-        width: 200px;
-        margin: 0;
-        position: absolute;
-        top: 43.5px;
-        left: 6%;
-    }
-    #nav_top_first {
-        font-size: 13.5px;
-        position: absolute;
-        left: 6.5%;
+    #map-box, .controls {
+        width: 100%;
+        margin-right: 0;
     }
     #map {
-        height: 500px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    #nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    #logo_first {
+        width: 150px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    #nav_top_first {
+        font-size: 12px;
+    }
+    #map {
+        height: 300px;
+    }
+    .modal-content img {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo_first {
+        width: 120px;
+    }
+    #nav_top_first {
+        font-size: 11px;
+    }
+    #map {
+        height: 250px;
+    }
+    .modal-content img {
+        max-height: 150px;
+    }
+    #nav {
+        padding: 10px;
+    }
+    #footer {
+        height: 60px;
+    }
+    #footer_in {
+        padding-top: 20px;
+        font-size: 12px;
     }
 }
