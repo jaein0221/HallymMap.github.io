@@ -26,7 +26,8 @@ function findClassroom() {
         searchResult.innerHTML = `검색된 건물: ${buildingInfo.building}, 층수: ${buildingInfo.floor}`;
         findBuildingOnMap(buildingInfo.mapBuilding);
         loadImagesForBuilding(buildingInfo.building); // 건물에 맞는 이미지 배열 로드
-        showImagesForFloor(buildingInfo.building, buildingInfo.floor);
+        currentBuilding = buildingInfo.building;
+        currentImageIndex = 0;
     } else {
         searchResult.innerHTML = '해당 강의실 번호를 찾을 수 없습니다.';
     }
@@ -73,10 +74,11 @@ function loadImagesForBuilding(building) {
     currentImages.push('B1', 'B2');
 }
 
-// 지도에서 건물 찾기
+// 지도에서 검색한 건물 찾기
 function findBuildingOnMap(mapBuildingName) {
     var places = new kakao.maps.services.Places();
 
+    // 이전 마커가 있으면 제거
     if (currentMarker) currentMarker.setMap(null);
 
     places.keywordSearch(mapBuildingName, function(result, status) {
@@ -84,26 +86,32 @@ function findBuildingOnMap(mapBuildingName) {
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             currentMarker = new kakao.maps.Marker({ map, position: coords });
             map.setCenter(coords);
-        } else alert('해당 건물을 지도에서 찾을 수 없습니다.');
+
+            // 마커 클릭 시 이미지를 보여주는 이벤트 리스너 추가
+            kakao.maps.event.addListener(currentMarker, 'click', function() {
+                showImagesForFloor(currentBuilding, currentImageIndex); // 마커 클릭 시 이미지 모달 띄우기
+            });
+        } else {
+            alert('해당 건물을 지도에서 찾을 수 없습니다.');
+        }
     });
 }
 
 // 이미지 표시 함수
 function showImagesForFloor(building, floor) {
-    currentBuilding = building;
     var floorMap = { '1층': 0, '2층': 1, '3층': 2, '4층': 3, '5층': 4, '6층': 5, '지하 1층': 6, '지하 2층': 7 };
     currentImageIndex = floorMap[floor] || 0;
     displayImage();
     document.getElementById('imageModal').style.display = 'block';
 }
 
-// 이미지 표시
+// 이미지를 화면에 표시하는 함수
 function displayImage() {
     const imageElement = document.getElementById('imageDisplay');
     imageElement.src = `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`;
 }
 
-// 이전 이미지
+// 이전 버튼 클릭 시 호출
 function prevImage() {
     if (currentImages.length > 0) {
         currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
@@ -113,7 +121,7 @@ function prevImage() {
     }
 }
 
-// 다음 이미지
+// 다음 버튼 클릭 시 호출
 function nextImage() {
     if (currentImages.length > 0) {
         currentImageIndex = (currentImageIndex + 1) % currentImages.length;
@@ -123,7 +131,7 @@ function nextImage() {
     }
 }
 
-// 모달 닫기
+// 닫기 버튼 클릭 시 호출
 function closeImageModal() {
     document.getElementById('imageModal').style.display = 'none';
     if (currentMarker) currentMarker.setMap(null);
