@@ -1,4 +1,15 @@
-/* 네비게이션 바 */
+/* 전체 초기화 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+/* 네비게이션 스타일 */
 #nav {
     width: 100%;
     height: 100px;
@@ -7,7 +18,6 @@
     position: relative;
 }
 
-/* 네비게이션 상단 */
 #nav_top {
     display: flex;
     list-style-type: none;
@@ -17,14 +27,12 @@
     justify-content: center;
 }
 
-/* 네비게이션 하단 */
 #nav_last {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* 네비게이션 링크 */
 #nav_top_first {
     text-decoration: none;
     position: absolute;
@@ -51,14 +59,153 @@
     border-radius: 10px;
 }
 
-/* 반응형 스타일 */
+/* map-box 스타일 */
+#map-box {
+    position: relative;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+/* 지도 크기 및 위치 조정 */
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* 이미지 모달 */
+#imageModal {
+    width: 100%;
+    display: none;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 모달 내부 콘텐츠 */
+.modal-content {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+    width: 100%;
+    max-height: 300px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* 모달 버튼 스타일 */
+.modal-content button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+/* 메인 컨테이너 */
+#container {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 검색 칸 컨테이너 */
+.input-container {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* 우측 패널 */
+.controls {
+    flex-basis: 30%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-left: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 푸터 스타일 */
+#footer {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(48, 48, 48);
+}
+
+#footer_in {
+    padding-top: 30px;
+    color: rgb(158, 158, 158);
+    font-size: 14px;
+    padding-left: 30px;
+}
+
+/* 반응형 레이아웃 */
 @media (max-width: 1024px) {
+    #container {
+        flex-direction: column;
+        height: auto;
+    }
+    #map-box, .controls {
+        width: 100%;
+        margin-right: 0;
+    }
+    #map {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
     #nav {
         height: auto;
         padding: 15px;
     }
     #logo_first {
-        width: 200px;
+        width: 150px;
         top: 10px;
         left: 10px;
         position: relative;
@@ -69,23 +216,11 @@
         height: auto;
         padding: 10px;
     }
-}
-
-@media (max-width: 768px) {
-    #logo_first {
-        width: 150px;
-        top: auto;
-        left: auto;
-        margin: 0 auto;
+    #map {
+        height: 300px;
     }
-    #nav_top_first {
-        font-size: 12px;
-        left: auto;
-        margin: 0 auto;
-    }
-    #nav {
-        padding: 10px;
-        height: auto;
+    .modal-content img {
+        max-height: 200px;
     }
 }
 
@@ -95,5 +230,19 @@
     }
     #nav_top_first {
         font-size: 11px;
+        left: 10px;
+    }
+    #map {
+        height: 250px;
+    }
+    .modal-content img {
+        max-height: 150px;
+    }
+    #footer {
+        height: 60px;
+    }
+    #footer_in {
+        padding-top: 20px;
+        font-size: 12px;
     }
 }
