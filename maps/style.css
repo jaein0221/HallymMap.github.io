@@ -94,7 +94,6 @@ a {
     margin-bottom: 10px;
     border-radius: 8px;
 }
-
 /* 모달 버튼 스타일 */
 .modal-content button {
     margin: 5px;
@@ -109,6 +108,14 @@ a {
 .modal-content button:hover {
     background-color: #45a049;
 }
+
+/* 버튼 컨테이너 스타일 - 버튼을 가로로 정렬 */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 
 /* 메인 컨테이너 */
 #container {
@@ -189,6 +196,14 @@ button:hover {
     }
     .input-container, .controls {
         width: 90%;
+        margin: 0 auto;
+    }
+    #container {
+        flex-direction: column-reverse;
+    }
+    /* 지도 및 검색창 너비 조정 */
+    #map-box, .controls {
+        width: 100%;
         margin: 0 auto;
     }
     .modal-content img {
