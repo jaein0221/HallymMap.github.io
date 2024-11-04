@@ -9,7 +9,7 @@ a {
     color: lightblue;
 }
 
-/* 네비게이션 스타일 */
+/* 기본 네비게이션 스타일 */
 #nav {
     width: 100%;
     height: 100px;
@@ -28,32 +28,7 @@ a {
     display: flex;
 }
 
-#nav_top_first {
-    text-decoration: none;
-    position: absolute;
-    left: 6.5%;
-    line-height: 30px;
-    font-size: 13.5px;
-    color: lightblue;
-}
-
-#nav_top_first:hover {
-    color: white;
-    border-radius: 3px;
-    transition-duration: 0.2s;
-}
-
-#logo_first {
-    position: absolute;
-    width: 250px;
-    top: 43.5px;
-    left: 6%;
-    padding: 5px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-/* map-box 스타일 */
+/* 지도 영역 스타일 */
 #map-box {
     position: relative;
     width: 70%;
@@ -65,7 +40,6 @@ a {
     margin-right: 20px;
 }
 
-/* 지도 크기 및 위치 조정 */
 #map {
     width: 100%;
     height: 500px;
@@ -73,29 +47,45 @@ a {
     margin-bottom: 10px;
 }
 
-/* 이미지 모달 */
-#imageModal {
-    width: 100%;
-    display: none;
+/* 이미지 모달 - 전체 화면 모드 */
+.full-screen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    z-index: 1;
 }
 
-/* 모달 내부 콘텐츠 */
-.modal-content {
+.full-screen-modal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    max-height: 90%;
     text-align: center;
 }
 
-.modal-content img {
+.full-screen-modal .modal-content img {
     width: 100%;
-    max-height: 300px;
-    margin-bottom: 10px;
+    max-height: calc(100vh - 120px);
     border-radius: 8px;
+    margin-bottom: 10px;
 }
-/* 모달 버튼 스타일 */
-.modal-content button {
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-buttons button {
     margin: 5px;
     padding: 5px 10px;
     background-color: #4CAF50;
@@ -105,76 +95,9 @@ a {
     cursor: pointer;
 }
 
-.modal-content button:hover {
+.modal-buttons button:hover {
     background-color: #45a049;
 }
-
-/* 버튼 컨테이너 스타일 - 버튼을 가로로 정렬 */
-.modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-
-/* 메인 컨테이너 */
-#container {
-    display: flex;
-    height: 800px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-/* 검색 칸 컨테이너 */
-.input-container {
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-
-/* 우측 패널 */
-.controls {
-    flex-basis: 30%;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-left: 1px solid #ccc;
-    margin-top: 10px;
-}
-
-input, button {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* 푸터 스타일 */
-#footer {
-    position: relative;
-    width: 100%;
-    height: 80px;
-    left: 0;
-    bottom: 0;
-    background-color: rgb(48, 48, 48);
-}
-
-#footer_in {
-    padding-top: 30px;
-    color: rgb(158, 158, 158);
-    font-size: 14px;
-    padding-left: 30px;
-}
-
 /* 반응형 레이아웃 - 지도, 검색창, 모달만 반응형 적용 */
 @media (max-width: 1024px) {
     #map-box {
@@ -186,30 +109,20 @@ button:hover {
     }
 }
 
+/* 반응형 레이아웃 */
 @media (max-width: 768px) {
-    #map-box {
-        width: 100%;
-        margin-right: 0;
+    #container {
+        flex-direction: column-reverse;
     }
     #map {
         height: 300px;
     }
-    .input-container, .controls {
-        width: 90%;
-        margin: 0 auto;
-    }
-    #container {
-        flex-direction: column-reverse;
-    }
-    /* 지도 및 검색창 너비 조정 */
-    #map-box, .controls {
+    .controls {
         width: 100%;
         margin: 0 auto;
     }
-    .modal-content img {
-        max-height: 200px;
-    }
 }
+
 
 @media (max-width: 480px) {
     #map-box {
