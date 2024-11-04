@@ -203,7 +203,13 @@ button:hover {
         height: auto;
         padding: 15px;
     }
-    
+    #logo_first {
+        width: 150px;
+        top: 10px;
+        left: 10px;
+        position: relative;
+        margin-bottom: 10px;
+    }
     #map {
         height: 300px;
     }
@@ -213,7 +219,9 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-   
+   #logo_first {
+        width: 120px;
+    }
     #map {
         height: 250px;
     }
