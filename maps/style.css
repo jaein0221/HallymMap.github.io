@@ -12,13 +12,9 @@ a {
 /* 기본 네비게이션 스타일 */
 #nav {
     width: 100%;
-    height: 80px; /* 높이 조정 */
+    height: 100px;
     padding-bottom: 10px;
     box-shadow: 0px -2px 10px 0.2px black;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
 }
 
 #nav_top {
@@ -36,6 +32,9 @@ a {
 
 #nav_top_first {
     text-decoration: none;
+    position: absolute;
+    left: 6.5%;
+    line-height: 30px;
     font-size: 13.5px;
     color: lightblue;
 }
@@ -47,30 +46,25 @@ a {
 }
 
 #logo_first {
-    width: 180px; /* 로고 크기 조정 */
-    padding: 5px;
-    background-color: white;
-    border-radius: 10px;
+    position: absolute;
+    width: 250px;
+    top: 43.5px;
+    left: 6%;
 }
 
-/* 지도 및 검색창 컨테이너 */
-#container {
-    display: flex;
-    width: 100%;
-    height: 800px;
-    margin-bottom: 20px;
-}
-
-/* 지도 영역 스타일 */
+/* map-box 스타일 */
 #map-box {
-    flex-basis: 70%; /* 지도의 비율 */
+    position: relative;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 10px;
     margin-right: 20px;
 }
 
+/* 지도 크기 및 위치 조정 */
 #map {
     width: 100%;
     height: 500px;
@@ -78,45 +72,48 @@ a {
     margin-bottom: 10px;
 }
 
-/* 전체 화면 모달 스타일 */
-.full-screen-modal {
+/* 이미지 모달 */
+#imageModal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
-    padding: 10px;
 }
 
-.full-screen-modal .modal-content {
+/* 전체 화면 모드 - 마커 클릭 시 */
+.full-screen-modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 모달 내부 콘텐츠 */
+.modal-content {
+    text-align: center;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 90%;
-    max-height: 90%;
-    text-align: center;
 }
 
 .full-screen-modal .modal-content img {
     width: 100%;
-    max-height: calc(100vh - 120px);
+    max-height: 100vh;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.modal-buttons button {
+/* 모달 버튼 스타일 */
+.modal-content button {
     margin: 5px;
     padding: 5px 10px;
     background-color: #4CAF50;
@@ -126,20 +123,30 @@ a {
     cursor: pointer;
 }
 
-.modal-buttons button:hover {
+.modal-content button:hover {
     background-color: #45a049;
 }
 
-/* 검색 패널 */
+/* 메인 컨테이너 */
+#container {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* 검색 칸 컨테이너 */
+.input-container {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* 우측 패널 */
 .controls {
-    flex-basis: 30%; /* 검색창이 오른쪽에 위치 */
+    flex-basis: 30%;
     padding: 20px;
     background-color: #f4f4f4;
     border-left: 1px solid #ccc;
-}
-
-.input-container {
-    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -161,42 +168,80 @@ button:hover {
     background-color: #45a049;
 }
 
-/* 반응형 레이아웃 */
-@media (max-width: 768px) {
-    /* 모바일에서 검색창을 지도 아래로 */
-    #container {
-        flex-direction: column-reverse;
-    }
+/* 푸터 스타일 */
+#footer {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(48, 48, 48);
+}
 
-    #map-box {
+#footer_in {
+    padding-top: 30px;
+    color: rgb(158, 158, 158);
+    font-size: 14px;
+    padding-left: 30px;
+}
+
+/* 반응형 레이아웃 */
+@media (max-width: 1024px) {
+    #container {
+        flex-direction: column;
+        height: auto;
+    }
+    #map-box, .controls {
         width: 100%;
         margin-right: 0;
     }
+    #map {
+        height: 400px;
+    }
+}
 
+@media (max-width: 768px) {
+    #nav {
+        height: auto;
+        padding: 15px;
+    }
+    #logo_first {
+        width: 150px;
+        top: 10px;
+        left: 10px;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    #nav_top {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
     #map {
         height: 300px;
     }
-
-    .controls {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    #logo_first {
-        width: 150px; /* 모바일에서 로고 크기 줄임 */
+    .modal-content img {
+        max-height: 200px;
     }
 }
 
 @media (max-width: 480px) {
-    #map {
-        height: 250px;
-    }
-
     #logo_first {
         width: 120px;
     }
-
+    #nav_top_first {
+        font-size: 11px;
+        left: 10px;
+    }
+    #map {
+        height: 250px;
+    }
     .modal-content img {
         max-height: 150px;
+    }
+    #footer {
+        height: 60px;
+    }
+    #footer_in {
+        padding-top: 20px;
+        font-size: 12px;
     }
 }
