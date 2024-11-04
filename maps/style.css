@@ -150,23 +150,27 @@ a {
     margin-top: 10px;
 }
 
-input, button {
-    padding: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* 모달 버튼 스타일 */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-button {
+.modal-buttons button {
+    padding: 5px 10px;
     background-color: #4CAF50;
     color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
+.modal-buttons button:hover {
     background-color: #45a049;
 }
+
 
 /* 푸터 스타일 */
 #footer {
