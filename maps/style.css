@@ -135,10 +135,12 @@ a {
     margin-bottom: 20px;
 }
 
-/* 검색 칸 컨테이너 */
-.input-container {
-    margin-bottom: 20px;
-    margin-top: 10px;
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /* 우측 패널 */
