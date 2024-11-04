@@ -26,6 +26,8 @@ a {
 
 #nav_last {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 지도 영역 스타일 */
@@ -98,19 +100,24 @@ a {
 .modal-buttons button:hover {
     background-color: #45a049;
 }
-/* 반응형 레이아웃 - 지도, 검색창, 모달만 반응형 적용 */
-@media (max-width: 1024px) {
-    #map-box {
-        width: 100%;
-        margin-right: 0;
+
+/* 반응형 레이아웃 */
+@media (min-width: 769px) {
+    /* PC에서는 검색창이 오른쪽 */
+    #container {
+        flex-direction: row;
     }
-    #map {
-        height: 400px;
+    .controls {
+        flex-basis: 30%;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-left: 1px solid #ccc;
+        margin-top: 10px;
     }
 }
 
-/* 반응형 레이아웃 */
 @media (max-width: 768px) {
+    /* 모바일에서 검색창을 지도 아래로 */
     #container {
         flex-direction: column-reverse;
     }
@@ -120,23 +127,5 @@ a {
     .controls {
         width: 100%;
         margin: 0 auto;
-    }
-}
-
-
-@media (max-width: 480px) {
-    #map-box {
-        width: 100%;
-        margin-right: 0;
-    }
-    #map {
-        height: 250px;
-    }
-    .input-container, .controls {
-        width: 95%;
-        margin: 0 auto;
-    }
-    .modal-content img {
-        max-height: 150px;
     }
 }
