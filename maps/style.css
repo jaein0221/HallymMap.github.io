@@ -142,7 +142,15 @@ input, button {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
 
+button:hover {
+    background-color: #45a049;
+}
 /* 우측 패널 */
 .controls {
     flex-basis: 30%;
