@@ -51,6 +51,8 @@ function getBuildingAndFloorFromClassroom(classroom) {
         floor = classroom.charAt(1) === 'B' ? `지하 ${classroom.charAt(2)}층` : `${classroom.charAt(1)}층`;
     } else if (classroom.length === 5) {
         if (classroom.startsWith('10')) { building = '10'; mapBuilding = '한림대학교 사회경영1관'; }
+        else if (classroom.startsWith('A1')) { building = '1'; mapBuilding = '한림대학교 공학관'; }
+        else if (classroom.startsWith('a1')) { building = '1'; mapBuilding = '한림대학교 공학관'; }
         else if (classroom.startsWith('13')) { building = '13'; mapBuilding = '한림대학교 사회경영2관'; }
         else if (classroom.startsWith('14')) { building = '14'; mapBuilding = '한림대학교 국제회의관'; }
         else if (classroom.startsWith('16')) { building = '16'; mapBuilding = '한림대학교 기초교육관'; }
