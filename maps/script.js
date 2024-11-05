@@ -10,6 +10,7 @@ var currentMarker = null; // 현재 표시된 마커
 var currentImageIndex = 0;
 var currentBuilding = null;
 var currentImages = [];
+var floorMap = { '1층': 0, '2층': 1, '3층': 2, '4층': 3, '5층': 4, '6층': 5, '지하 1층': 6, '지하 2층': 7 }; // 층수 배열 추가
 
 // 강의실 검색 함수
 function findClassroom() {
@@ -101,7 +102,6 @@ function findBuildingOnMap(mapBuildingName) {
 
 // 이미지 표시 함수
 function showImagesForFloor(building, floor) {
-    var floorMap = { '1층': 0, '2층': 1, '3층': 2, '4층': 3, '5층': 4, '6층': 5, '지하 1층': 6, '지하 2층': 7 };
     currentImageIndex = floorMap[floor] || 0;
     displayImage();
     document.getElementById('imageModal').style.display = 'block';
