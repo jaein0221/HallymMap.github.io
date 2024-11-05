@@ -22,7 +22,7 @@ function findClassroom() {
 
     var buildingInfo = getBuildingAndFloorFromClassroom(classroom);
     if (buildingInfo && buildingInfo.building) {
-        searchResult.innerHTML = 검색된 건물: ${buildingInfo.building}, 층수: ${buildingInfo.floor};
+        searchResult.innerHTML = `검색된 건물: ${buildingInfo.building}, 층수: ${buildingInfo.floor}`;
         findBuildingOnMap(buildingInfo.mapBuilding);  // 지도에 사용될 건물 이름으로 검색
         showImagesForFloor(buildingInfo.building, buildingInfo.floor); // 해당 층에 맞는 이미지 표시
     } else {
@@ -44,7 +44,6 @@ function getBuildingAndFloorFromClassroom(classroom) {
 
     // 자리수에 따라 건물 및 층수 구분
     if (cleanedClassroom.length === 4) {
-        // 4자리 강의실은 공학관으로 매칭
         if (cleanedClassroom.startsWith('1')) {
             building = '1'; // 공학관
             mapBuilding = '한림대학교 공학관';
@@ -73,12 +72,11 @@ function getBuildingAndFloorFromClassroom(classroom) {
     
         // 층수 처리
         if (classroom.charAt(1).toUpperCase() === 'B') {
-            floor = 지하 ${classroom.charAt(2)}층; // 'B'로 시작하면 지하
+            floor = `지하 ${classroom.charAt(2)}층`; // 'B'로 시작하면 지하
         } else {
-            floor = ${classroom.charAt(1)}층; // 두 번째 숫자가 층수
+            floor = `${classroom.charAt(1)}층`; // 두 번째 숫자가 층수
         }
     } else if (cleanedClassroom.length === 5) {
-        // 5자리 강의실 구분
         if (cleanedClassroom.startsWith('10')) {
             building = '10'; // 사회경영1관 폴더 이름
             mapBuilding = '한림대학교 사회경영1관';
@@ -104,9 +102,9 @@ function getBuildingAndFloorFromClassroom(classroom) {
     
         // 'B'가 아닌 경우 정상적인 층수 처리
         if (classroom.charAt(2).toUpperCase() === 'B') {
-            floor = 지하 ${classroom.charAt(3)}층; // 'B'가 있으면 지하층 처리
+            floor = `지하 ${classroom.charAt(3)}층`; // 'B'가 있으면 지하층 처리
         } else {
-            floor = ${classroom.charAt(2)}층; // 세 번째 숫자가 층수
+            floor = `${classroom.charAt(2)}층`; // 세 번째 숫자가 층수
         }
     }
 
@@ -114,7 +112,7 @@ function getBuildingAndFloorFromClassroom(classroom) {
     if (classroom.charAt(0).toUpperCase() === 'B') {
         building = '10'; // 사회경영1관으로 매칭
         mapBuilding = '한림대학교 사회경영1관';
-        floor = 지하 ${classroom.charAt(1)}층;
+        floor = `지하 ${classroom.charAt(1)}층`;
     }
 
     return {
@@ -170,8 +168,8 @@ function displayImage() {
         const imageElement = document.getElementById('imageDisplay');
         
         // building 폴더 추가하여 이미지 경로 설정
-        imageElement.src = maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png;
-        console.log("Displaying image:", maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png);
+        imageElement.src = `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`;
+        console.log("Displaying image:", `maps/images/${currentBuilding}/${currentImages[currentImageIndex]}.png`);
     } else {
         console.error("No images found to display.");
     }
