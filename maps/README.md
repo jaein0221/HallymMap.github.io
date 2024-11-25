@@ -1,1 +1,0 @@
-# HallymMap.github.io
