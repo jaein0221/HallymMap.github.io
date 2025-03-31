@@ -1,1 +1,1 @@
-# HallymMap.github.io
+# Map.github.io
